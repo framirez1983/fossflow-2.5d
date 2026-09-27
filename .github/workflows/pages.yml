@@ -40,7 +40,7 @@ jobs:
         env:
           # do not report warnings as errors
           CI: false
-          PUBLIC_URL: /FossFLOW/
+          PUBLIC_URL: /fossflow-2.5d/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

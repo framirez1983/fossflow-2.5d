@@ -1,172 +1,213 @@
-# FossFLOW - Isometric Diagramming Tool <img width="30" height="30" alt="fossflow" src="https://github.com/user-attachments/assets/56d78887-601c-4336-ab87-76f8ee4cde96" />
+# FossFLOW 2.5D
 
-<p align="center">
- <a href="README.md">English</a> | <a href="docs/README.cn.md">简体中文</a> | <a href="docs/README.es.md">Español</a> | <a href="docs/README.pt.md">Português</a> | <a href="docs/README.fr.md">Français</a> | <a href="docs/README.hi.md">हिन्दी</a> | <a href="docs/README.bn.md">বাংলা</a> | <a href="docs/README.ru.md">Русский</a> | <a href="docs/README.id.md">Bahasa Indonesia</a> | <a href="docs/README.de.md">Deutsch</a>
-</p>
+> Isometric diagramming in the browser. An independent continuation of [FossFLOW](https://github.com/agisota/FossFLOW).
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-<p align="center">
-<a href="https://trendshift.io/repositories/15118" target="_blank"><img src="https://trendshift.io/api/badge/repositories/15118" alt="stan-smith%2FFossFLOW | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</p>
+FossFLOW 2.5D is a privacy-first, open-source Progressive Web App for drawing
+isometric diagrams — network topologies, floor plans, data-centre layouts and
+technical schematics. It runs entirely in your browser and works offline. Your
+diagrams stay on your machine unless you explicitly turn on Server Storage.
 
-<b>Hey!</b> Stan here, if you've used FossFLOW and it's helped you, <b>I'd really appreciate if you could donate something small :)</b> I work full time, and finding the time to work on this project is challenging enough.
-If you've had a feature that I've implemented for you, or fixed a bug it'd be great if you could :) if not, that's not a problem, this software will always remain free!
+## Highlights
 
+- **Rotatable isometric views** — four orientations, with a compass that shows
+  where geographic North lies relative to the rotated scene.
+- **Multi-View** — several named views per document, switchable from the bottom bar.
+- **Portable `.fossflow` files** — a self-contained project format that keeps a
+  diagram, its icons and its colours in one file.
+- **Server Storage** — optional filesystem-backed saving, with HTTP basic auth
+  and rate limiting, for people who want their diagrams across devices.
+- **Icon Library** — a reusable set of custom icons kept on your server, copied
+  into a document when used so shared files stay self-contained.
+- **Export** — PNG and SVG that match what you see in the editor.
+- **Rectangle Lock** — freeze a grouping rectangle's position and size while
+  keeping it selectable and unlockable.
+- **Offline PWA** — installable, and usable with no network at all.
 
-<b>Also!</b> If you haven't yet, please check out the underlying library this is built on by <a href="https://github.com/markmanx/isoflow">@markmanx</a> I truly stand on the shoulders of a giant here 🫡
+## Contents
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P61KBXA3)
+- [Install](#install)
+- [Concepts](#concepts)
+- [Files and storage](#files-and-storage)
+- [Export](#export)
+- [Localization](#localization)
+- [Development](#development)
+- [Project heritage and attribution](#project-heritage-and-attribution)
+- [Contributing](#contributing)
+- [License](#license)
 
-<a href="https://www.buymeacoffee.com/stan.smith" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+## Install
 
-Thanks,
+### Docker (recommended)
 
--Stan
-
-## Try it online
-<p align="center">
-Go to  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
-</p>
-<p align="center">
-
- <a href="https://github.com/stan-smith/SlingShot">
-  Check out my latest project: <b>SlingShot</b> - Dead easy video streaming over QUIC
- </a>
-</p>
-
-------------------------------------------------------------------------------------------------------------------------------
-
-## This just in: Connectors get multiplexed!
-
-<p align="center">
-<img src="demos/connectors.gif" alt="Multiplexed connectors demo" />
-</p>
-
-FossFLOW is a powerful, open-source Progressive Web App (PWA) for creating beautiful isometric diagrams. Built with React and the <a href="https://github.com/markmanx/isoflow">Isoflow</a> (Now forked and published to NPM as fossflow) library, it runs entirely in your browser with offline support.
-
-![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
-
-- **🤝 [CONTRIBUTING.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTING.md)** - How to contribute to the project.
-
-## 🐳 Quick Deploy with Docker
+Server Storage is enabled by default and diagrams are written to `./diagrams`
+on the host.
 
 ```bash
-# Using Docker Compose (recommended - includes persistent storage)
+git clone https://github.com/framirez1983/fossflow-2.5d.git
+cd fossflow-2.5d
 docker compose up
-
-# Or run directly from Docker Hub with persistent storage
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
-Server storage is enabled by default in Docker. Your diagrams will be saved to `./diagrams` on the host.
+Then open <http://localhost>.
 
-To disable server storage, set `ENABLE_SERVER_STORAGE=false`:
+To disable server storage and keep everything in the browser:
+
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
-### HTTP Basic Authentication (Optional)
+#### HTTP basic authentication (optional)
 
-Protect your FossFLOW instance with HTTP Basic Auth:
+Set both variables to protect the instance:
 
 ```bash
-# With Docker Compose
 HTTP_AUTH_USER=admin HTTP_AUTH_PASSWORD=secret docker compose up
-
-# Or with docker run
-docker run -p 80:80 \
-  -e HTTP_AUTH_USER=admin \
-  -e HTTP_AUTH_PASSWORD=secret \
-  stnsmith/fossflow:latest
 ```
 
-> **Note**: Both variables must be set to enable authentication. If either is empty, the app is accessible without login.
+> If either variable is empty, the app is reachable without a login.
 
-## Quick Start (Local Development)
+### Local development
+
+Requires Node `>=24`.
 
 ```bash
-# Clone the repository
-git clone https://github.com/stan-smith/FossFLOW
-cd FossFLOW
-
-# Install dependencies
-npm install
-
-# Build the library (required first time)
-npm run build:lib
-
-# Start development server
+git clone https://github.com/framirez1983/fossflow-2.5d.git
+cd fossflow-2.5d
+npm ci
+npm run build:lib     # required first time
+npm run build:app
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open <http://localhost:3000>.
 
-## Monorepo Structure
+## Concepts
 
-This is a monorepo containing two packages:
+### Views
 
-- `packages/fossflow-lib` - React component library for drawing network diagrams (built with Webpack)
-- `packages/fossflow-app` - Progressive Web App which wraps the lib and presents it (built with RSBuild)
+A document can hold several named **views**. Each view has its own items,
+connectors, text boxes and rectangles, and you switch between them from the
+bottom bar. Use views to keep, for example, a physical layout and a logical
+topology in one file.
 
-### Development Commands
+### Rotatable isometric views
+
+The view orientation (NE, NW, SE, SW) is stored per view. The compass in the
+lower-left control bar shows where North actually points for the current
+orientation — it is derived from the isometric projection, not a decorative
+label.
+
+Panning is convenient from the cursor: dragging empty canvas pans and returns
+to Select on release. Choosing the Hand tool explicitly keeps the editor in Pan
+until you switch back.
+
+### Rectangles
+
+Rectangles are grouping and area surfaces. **Lock position** freezes a
+rectangle's geometry while leaving it visible, selectable and unlockable, so it
+cannot be moved or resized by accident. Objects still place and interact on top
+of a locked rectangle, and other objects above it keep interaction priority.
+
+### Mouse model
+
+| Action | Result |
+| --- | --- |
+| Left click | Select, manipulate, deselect |
+| Right click | Contextual creation menu (Add Node, Add Rectangle) |
+| Drag empty canvas | Transient pan, returns to Select |
+| Left drag on an object | Move the object |
+
+### Icon Library
+
+Custom icons can be kept in a reusable library on your server and reused across
+diagrams. Using an icon copies it into the current document, so a shared
+`.fossflow` file never depends on the server. Uploads are sanitized and limited
+to 1 MiB, and icons that reference external resources are rejected.
+
+## Files and storage
+
+FossFLOW can keep your work in three places:
+
+- **`.fossflow` files** — the canonical editable project format. A single
+  self-contained file holding the diagram, its icons and its colours.
+- **Server Storage** — an optional backend that writes diagrams to disk, so you
+  can open them from another device. Off unless you enable it.
+- **Session storage** — the browser-only fallback, cleared when the tab closes.
+
+Legacy `.json` exports from earlier FossFLOW versions are still accepted on
+import and upload.
+
+## Export
+
+Export to PNG or SVG, with options for the grid, background colour, expanded
+labels, label background opacity and export scale. Exports match the editor,
+including for rotated views.
+
+## Localization
+
+The interface is available in 12 languages: Bengali, English, Spanish, French,
+Hindi, Indonesian, Italian, Polish, Portuguese, Russian, Turkish and Simplified
+Chinese. The language can be changed from the toolbar.
+
+## Development
+
+This is an npm workspaces monorepo:
+
+| Package | Description |
+| --- | --- |
+| `packages/fossflow-lib` | Publishable `fossflow` React library (Rslib) |
+| `packages/fossflow-app` | The PWA itself (RSBuild) |
+| `packages/fossflow-backend` | Optional storage backend (plain Node, no build) |
 
 ```bash
-# Development
-npm run dev          # Start app development server
-npm run dev:lib      # Watch mode for library development
+npm run dev            # app dev server
+npm run dev:lib        # library watch mode
+npm run dev:backend    # backend, for filesystem storage
 
-# Building
-npm run build        # Build both library and app
-npm run build:lib    # Build library only
-npm run build:app    # Build app only
+npm run build          # build:lib then build:app
+npm run build:lib
+npm run build:app
 
-# Testing & Linting
-npm test             # Run unit tests
-npm run lint         # Check for linting errors
-
-# E2E Tests (Selenium)
-cd e2e-tests
-./run-tests.sh       # Run end-to-end tests (requires Docker & Python)
-
-# Publishing
-npm run publish:lib  # Publish library to npm
+npm test               # unit tests
+npm run lint           # TypeScript --noEmit check
 ```
 
-## How to Use
+`npm run build` must build the library before the app, because the app consumes
+the local `fossflow` workspace package. See [AGENTS.md](AGENTS.md) for the
+finer architectural notes and [FOSSFLOW_ENCYCLOPEDIA.md](FOSSFLOW_ENCYCLOPEDIA.md)
+for a broader tour of the codebase.
 
-### Creating Diagrams
+## Project heritage and attribution
 
-1. **Add Items**:
-   - Press the "+" button on the top right menu, the library of components will appear on the left
-   - Drag and drop components from the library onto the canvas
-   - Or right-click on the grid and select "Add node"
+FossFLOW 2.5D is an **independent continuation** of the FossFLOW project. It
+builds directly on the work of others:
 
-2. **Connect Items**: 
-   - Select the Connector tool (press 'C' or click connector icon)
-   - **Click mode** (default): Click first node, then click second node
-   - **Drag mode** (optional): Click and drag from first to second node
-   - Switch modes in Settings → Connectors tab
+- **Isoflow**, by [Mark Mankarious](https://github.com/markmanx/isoflow) — the
+  isometric diagramming library this project is built on. The `fossflow` library
+  in this repository is a fork of it, and the original MIT copyright notice is
+  retained verbatim in [LICENSE](LICENSE).
+- **FossFLOW**, by [Stan Smith](https://github.com/agisota/FossFLOW) — the
+  Progressive Web App that this project continues, including the bulk of the
+  code and the history recorded in [CHANGELOG.md](CHANGELOG.md) below the
+  `1.0.0` entry.
 
-3. **Save Your Work**:
-   - **Quick Save** - Saves to browser session
-   - **Export** - Download as JSON file
-   - **Import** - Load from JSON file
+We are grateful to both projects and to everyone who contributed to them. FossFLOW
+2.5D is released under the same MIT licence as its predecessors.
 
-### Storage Options
-
-- **Session Storage**: Temporary saves cleared when browser closes
-- **Export/Import**: Permanent storage as JSON files
-- **Auto-Save**: Automatically saves changes every 5 seconds to session
+This project is **not affiliated with, nor endorsed by**, the original
+maintainers. Please report FossFLOW 2.5D-specific issues here; issues belonging
+to the original FossFLOW or Isoflow projects should go to those projects.
 
 ## Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Documentation
-
-- [FOSSFLOW_ENCYCLOPEDIA.md](FOSSFLOW_ENCYCLOPEDIA.md) - Comprehensive guide to the codebase
-- [CONTRIBUTING.md](CONTRIBUTING.md) - Contributing guidelines
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for
+guidelines, the commit convention, and the development workflow.
 
 ## License
 
-MIT
+MIT. See [LICENSE](LICENSE).
+
+The MIT copyright notice for the original Isoflow work by Mark Mankarious is
+preserved unchanged.

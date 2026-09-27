@@ -21,7 +21,7 @@
 
 ## Попробуйте онлайн
 
-Перейдите на  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+Перейдите на  <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FossFLOW - это мощное прогрессивное веб-приложе�
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - Как внести вклад в проект.
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - Как внести вклад в проект.
 
 ## Недавние обновления (Октябрь 2025)
 
@@ -69,9 +69,7 @@ FossFLOW - это мощное прогрессивное веб-приложе�
 - **Диалог настроек** - Централизованная конфигурация для горячих клавиш и элементов управления панорамированием
 
 ### Улучшения Docker и CI/CD
-- **Автоматизированные сборки Docker** - Рабочий процесс GitHub Actions для автоматического развертывания Docker Hub при коммитах
 - **Поддержка мультиархитектуры** - Образы Docker для `linux/amd64` и `linux/arm64`
-- **Предварительно собранные образы** - Доступны на `stnsmith/fossflow:latest`
 
 ### Архитектура Monorepo
 - **Единый репозиторий** для библиотеки и приложения
@@ -97,27 +95,22 @@ FossFLOW - это мощное прогрессивное веб-приложе�
 
 
 ## 🐳 Быстрое развертывание с Docker
-
 ```bash
 # Использование Docker Compose (рекомендуется - включает постоянное хранилище)
 docker compose up
-
-# Или запустите напрямую из Docker Hub с постоянным хранилищем
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 Хранилище сервера включено по умолчанию в Docker. Ваши диаграммы будут сохранены в `./diagrams` на хосте.
 
 Чтобы отключить хранилище сервера, установите `ENABLE_SERVER_STORAGE=false`:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## Быстрый старт (Локальная разработка)
-
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # Установить зависимости
@@ -140,7 +133,6 @@ npm run dev
 - `packages/fossflow-app` - Прогрессивное веб-приложение для создания изометрических диаграмм (собрано с RSBuild)
 
 ### Команды разработки
-
 ```bash
 # Разработка
 npm run dev          # Запустить сервер разработки приложения

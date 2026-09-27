@@ -21,7 +21,7 @@
 
 ## এটি অনলাইনে চেষ্টা করুন
 
-যান  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+যান  <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FossFLOW হল সুন্দর আইসোমেট্রিক ডায�
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - প্রকল্পে কীভাবে অবদান রাখবেন।
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - প্রকল্পে কীভাবে অবদান রাখবেন।
 
 ## সাম্প্রতিক আপডেট (অক্টোবর 2025)
 
@@ -69,9 +69,7 @@ FossFLOW হল সুন্দর আইসোমেট্রিক ডায�
 - **সেটিংস ডায়ালগ** - হটকি এবং প্যান কন্ট্রোলের জন্য কেন্দ্রীভূত কনফিগারেশন
 
 ### Docker এবং CI/CD উন্নতি
-- **স্বয়ংক্রিয় Docker বিল্ড** - কমিটে স্বয়ংক্রিয় Docker Hub ডিপ্লয়মেন্টের জন্য GitHub Actions ওয়ার্কফ্লো
 - **মাল্টি-আর্কিটেকচার সমর্থন** - `linux/amd64` এবং `linux/arm64` উভয়ের জন্য Docker ইমেজ
-- **প্রি-বিল্ট ইমেজ** - `stnsmith/fossflow:latest`-এ উপলব্ধ
 
 ### Monorepo আর্কিটেকচার
 - লাইব্রেরি এবং অ্যাপ্লিকেশন উভয়ের জন্য **একক রিপোজিটরি**
@@ -97,27 +95,22 @@ FossFLOW হল সুন্দর আইসোমেট্রিক ডায�
 
 
 ## 🐳 Docker দিয়ে দ্রুত ডিপ্লয়
-
 ```bash
 # Docker Compose ব্যবহার করা (প্রস্তাবিত - স্থায়ী স্টোরেজ অন্তর্ভুক্ত)
 docker compose up
-
-# অথবা স্থায়ী স্টোরেজ সহ Docker Hub থেকে সরাসরি চালান
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 Docker-এ সার্ভার স্টোরেজ ডিফল্টভাবে সক্রিয়। আপনার ডায়াগ্রামগুলি হোস্টে `./diagrams`-এ সংরক্ষিত হবে।
 
 সার্ভার স্টোরেজ নিষ্ক্রিয় করতে, `ENABLE_SERVER_STORAGE=false` সেট করুন:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## দ্রুত শুরু (স্থানীয় উন্নয়ন)
-
 ```bash
 # রিপোজিটরি ক্লোন করুন
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # নির্ভরতা ইনস্টল করুন
@@ -140,7 +133,6 @@ npm run dev
 - `packages/fossflow-app` - আইসোমেট্রিক ডায়াগ্রাম তৈরির জন্য Progressive Web App (RSBuild দিয়ে তৈরি)
 
 ### উন্নয়ন কমান্ড
-
 ```bash
 # উন্নয়ন
 npm run dev          # অ্যাপ উন্নয়ন সার্ভার শুরু করুন

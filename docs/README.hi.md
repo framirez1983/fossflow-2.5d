@@ -21,7 +21,7 @@
 
 ## इसे ऑनलाइन आज़माएं
 
-यहां जाएं  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+यहां जाएं  <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FossFLOW सुंदर आइसोमेट्रिक आरेख बन�
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - परियोजना में योगदान कैसे करें।
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - परियोजना में योगदान कैसे करें।
 
 ## हाल के अपडेट (अक्टूबर 2025)
 
@@ -69,9 +69,7 @@ FossFLOW सुंदर आइसोमेट्रिक आरेख बन�
 - **सेटिंग्स संवाद** - हॉटकी और पैन नियंत्रण के लिए केंद्रीकृत कॉन्फ़िगरेशन
 
 ### Docker और CI/CD सुधार
-- **स्वचालित Docker बिल्ड** - कमिट्स पर स्वचालित Docker Hub डिप्लॉयमेंट के लिए GitHub Actions वर्कफ़्लो
 - **बहु-आर्किटेक्चर समर्थन** - `linux/amd64` और `linux/arm64` दोनों के लिए Docker छवियां
-- **पूर्व-निर्मित छवियां** - `stnsmith/fossflow:latest` पर उपलब्ध
 
 ### Monorepo आर्किटेक्चर
 - लाइब्रेरी और एप्लिकेशन दोनों के लिए **एकल रिपॉजिटरी**
@@ -97,27 +95,22 @@ FossFLOW सुंदर आइसोमेट्रिक आरेख बन�
 
 
 ## 🐳 Docker के साथ त्वरित डिप्लॉय
-
 ```bash
 # Docker Compose का उपयोग करना (अनुशंसित - स्थायी भंडारण शामिल)
 docker compose up
-
-# या स्थायी भंडारण के साथ Docker Hub से सीधे चलाएं
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 Docker में सर्वर स्टोरेज डिफ़ॉल्ट रूप से सक्षम है। आपके आरेख होस्ट पर `./diagrams` में सहेजे जाएंगे।
 
 सर्वर स्टोरेज अक्षम करने के लिए, `ENABLE_SERVER_STORAGE=false` सेट करें:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## त्वरित प्रारंभ (स्थानीय विकास)
-
 ```bash
 # रिपॉजिटरी क्लोन करें
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # निर्भरताएं इंस्टॉल करें
@@ -140,7 +133,6 @@ npm run dev
 - `packages/fossflow-app` - आइसोमेट्रिक आरेख बनाने के लिए Progressive Web App (RSBuild के साथ निर्मित)
 
 ### विकास आदेश
-
 ```bash
 # विकास
 npm run dev          # ऐप विकास सर्वर शुरू करें

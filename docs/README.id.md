@@ -21,7 +21,7 @@ Terima kasih,
 
 ## Coba Secara Online
 
-Kunjungi  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+Kunjungi  <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FossFLOW adalah aplikasi web progresif (PWA) open-source yang powerful untuk mem
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - Cara berkontribusi pada proyek.
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - Cara berkontribusi pada proyek.
 
 ## Pembaruan Terbaru (Oktober 2025)
 
@@ -57,9 +57,7 @@ FossFLOW adalah aplikasi web progresif (PWA) open-source yang powerful untuk mem
 - **Dialog Pengaturan** - Konfigurasi terpusat untuk hotkey dan kontrol pan
 
 ### Peningkatan Docker & CI/CD
-- **Build Docker Otomatis** - Workflow GitHub Actions untuk deployment Docker Hub otomatis pada commit
 - **Dukungan Multi-arsitektur** - Image Docker untuk `linux/amd64` dan `linux/arm64`
-- **Image Pra-dibangun** - Tersedia di `stnsmith/fossflow:latest`
 
 ### Arsitektur Monorepo
 - **Repositori tunggal** untuk library dan aplikasi
@@ -85,27 +83,22 @@ FossFLOW adalah aplikasi web progresif (PWA) open-source yang powerful untuk mem
 
 
 ## 🐳 Deploy Cepat dengan Docker
-
 ```bash
 # Menggunakan Docker Compose (disarankan - termasuk penyimpanan persisten)
 docker compose up
-
-# Atau jalankan langsung dari Docker Hub dengan penyimpanan persisten
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 Penyimpanan server diaktifkan secara default di Docker. Diagram Anda akan disimpan ke `./diagrams` di host.
 
 Untuk menonaktifkan penyimpanan server, set `ENABLE_SERVER_STORAGE=false`:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## Mulai Cepat (Pengembangan Lokal)
-
 ```bash
 # Clone repositori
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # Install dependensi
@@ -128,7 +121,6 @@ Ini adalah monorepo yang berisi dua paket:
 - `packages/fossflow-app` - Progressive Web App untuk membuat diagram isometrik (dibangun dengan RSBuild)
 
 ### Perintah Pengembangan
-
 ```bash
 # Pengembangan
 npm run dev          # Mulai development server aplikasi

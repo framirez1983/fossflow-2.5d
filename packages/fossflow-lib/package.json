@@ -1,13 +1,24 @@
 {
   "name": "fossflow",
   "version": "1.0.0",
-  "private": false,
-  "description": "An open-source React component for drawing network diagrams - forked from isoflow.",
+  "private": true,
+  "description": "An open-source React component for drawing isometric network diagrams - a fork of isoflow, maintained as part of FossFLOW 2.5D.",
   "license": "MIT",
+  "homepage": "https://github.com/framirez1983/fossflow-2.5d#readme",
+  "bugs": {
+    "url": "https://github.com/framirez1983/fossflow-2.5d/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stan-smith/FossFLOW.git"
+    "url": "https://github.com/framirez1983/fossflow-2.5d.git"
   },
+  "keywords": [
+    "isometric",
+    "diagram",
+    "network-diagram",
+    "react",
+    "typescript"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [

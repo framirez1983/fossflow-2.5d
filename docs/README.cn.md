@@ -21,7 +21,7 @@ FossFLOW 是一款功能强大的、开源的渐进式 Web 应用（PWA），专
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - 如何为项目做出贡献。
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - 如何为项目做出贡献。
 
 ## 功能
 
@@ -35,13 +35,12 @@ FossFLOW 是一款功能强大的、开源的渐进式 Web 应用（PWA），专
 
 ## 在线试用
 
-访问 https://stan-smith.github.io/FossFLOW/
+访问 https://framirez1983.github.io/fossflow-2.5d/
 
 ## 快速开始 (本地开发)
-
 ```bash
 # 克隆仓库
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # 安装依赖
@@ -85,7 +84,6 @@ npm start
 - ***新增*** Ctrl+Z 撤销，Ctrl+Y 重做
 
 ## 生产环境构建
-
 ```bash
 # 创建优化后的生产环境构建
 npm run build

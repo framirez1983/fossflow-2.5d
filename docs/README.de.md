@@ -19,7 +19,7 @@ Danke,
 
 ## Online ausprobieren
 
-Gehe zu <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+Gehe zu <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -27,30 +27,25 @@ FossFLOW ist eine leistungsstarke, quelloffene Progressive Web App (PWA) zum Ers
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTING.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTING.md)** - Wie du zum Projekt beitragen kannst.
+- **🤝 [CONTRIBUTING.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - Wie du zum Projekt beitragen kannst.
 
 ## 🐳 Schnelle Bereitstellung mit Docker
-
 ```bash
 # Mit Docker Compose (empfohlen - beinhaltet persistenten Speicher)
 docker compose up
-
-# Oder direkt von Docker Hub mit persistentem Speicher ausführen
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 Server-Speicher ist in Docker standardmäßig aktiviert. Deine Diagramme werden in `./diagrams` auf dem Host gespeichert.
 
 Um den Server-Speicher zu deaktivieren, setze `ENABLE_SERVER_STORAGE=false`:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## Schnellstart (Lokale Entwicklung)
-
 ```bash
 # Repository klonen
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # Abhängigkeiten installieren
@@ -73,7 +68,6 @@ Dies ist ein Monorepo mit zwei Paketen:
 - `packages/fossflow-app` - Progressive Web App, die die Bibliothek umhüllt und präsentiert (gebaut mit RSBuild)
 
 ### Entwicklungsbefehle
-
 ```bash
 # Entwicklung
 npm run dev          # App-Entwicklungsserver starten

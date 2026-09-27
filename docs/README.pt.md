@@ -21,7 +21,7 @@ Obrigado,
 
 ## Experimente online
 
-Vá para  <b> --> https://stan-smith.github.io/FossFLOW/ <-- </b>
+Vá para  <b> --> https://framirez1983.github.io/fossflow-2.5d/ <-- </b>
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FossFLOW é um poderoso Progressive Web App (PWA) de código aberto para criar b
 
 ![Screenshot_20250630_160954](https://github.com/user-attachments/assets/e7f254ad-625f-4b8a-8efc-5293b5be9d55)
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/FossFLOW/blob/master/CONTRIBUTORS.md)** - Como contribuir para o projeto.
+- **🤝 [CONTRIBUTORS.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - Como contribuir para o projeto.
 
 ## Atualizações Recentes (Outubro 2025)
 
@@ -69,9 +69,7 @@ FossFLOW é um poderoso Progressive Web App (PWA) de código aberto para criar b
 - **Diálogo de Configurações** - Configuração centralizada para teclas de atalho e controles de panorâmica
 
 ### Melhorias de Docker e CI/CD
-- **Builds Docker Automatizadas** - Fluxo de trabalho do GitHub Actions para implantação automática do Docker Hub em commits
 - **Suporte Multi-arquitetura** - Imagens Docker para `linux/amd64` e `linux/arm64`
-- **Imagens Pré-construídas** - Disponíveis em `stnsmith/fossflow:latest`
 
 ### Arquitetura Monorepo
 - **Repositório único** para biblioteca e aplicação
@@ -97,27 +95,22 @@ FossFLOW é um poderoso Progressive Web App (PWA) de código aberto para criar b
 
 
 ## 🐳 Implantação Rápida com Docker
-
 ```bash
 # Usando Docker Compose (recomendado - inclui armazenamento persistente)
 docker compose up
-
-# Ou execute diretamente do Docker Hub com armazenamento persistente
-docker run -p 80:80 -v $(pwd)/diagrams:/data/diagrams stnsmith/fossflow:latest
 ```
 
 O armazenamento no servidor está habilitado por padrão no Docker. Seus diagramas serão salvos em `./diagrams` no host.
 
 Para desabilitar o armazenamento no servidor, defina `ENABLE_SERVER_STORAGE=false`:
 ```bash
-docker run -p 80:80 -e ENABLE_SERVER_STORAGE=false stnsmith/fossflow:latest
+ENABLE_SERVER_STORAGE=false docker compose up
 ```
 
 ## Início Rápido (Desenvolvimento Local)
-
 ```bash
 # Clonar o repositório
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # Instalar dependências
@@ -140,7 +133,6 @@ Este é um monorepo contendo dois pacotes:
 - `packages/fossflow-app` - Progressive Web App para criar diagramas isométricos (construído com RSBuild)
 
 ### Comandos de Desenvolvimento
-
 ```bash
 # Desenvolvimento
 npm run dev          # Iniciar servidor de desenvolvimento do aplicativo

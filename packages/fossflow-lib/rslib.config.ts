@@ -3,6 +3,10 @@ import { pluginReact } from '@rsbuild/plugin-react';
 
 const packageJson = require('./package.json');
 
+// The in-app "Help > GitHub" link opens this in a browser, so drop the
+// clone-oriented `.git` suffix that npm manifests carry.
+const REPOSITORY_URL = String(packageJson.repository.url).replace(/\.git$/, '');
+
 export default defineConfig({
   lib: [
     {
@@ -23,7 +27,7 @@ export default defineConfig({
     },
     define: {
       PACKAGE_VERSION: JSON.stringify(packageJson.version),
-      REPOSITORY_URL: JSON.stringify(packageJson.repository.url),
+      REPOSITORY_URL: JSON.stringify(REPOSITORY_URL),
     },
   },
   resolve: {

@@ -6,7 +6,7 @@ FossFLOW is a powerful, open-source Progressive Web App (PWA) for creating beaut
 
 
 
-- **🤝 [CONTRIBUTORS.md](https://github.com/stan-smith/fossflow-lib/blob/main/CONTRIBUTORS.md)** - How to contribute to the project.
+- **🤝 [CONTRIBUTING.md](https://github.com/framirez1983/fossflow-2.5d/blob/master/CONTRIBUTING.md)** - How to contribute to the project.
 
 
 ## Features
@@ -20,16 +20,11 @@ FossFLOW is a powerful, open-source Progressive Web App (PWA) for creating beaut
 - 🌐 **Offline Support** - Work without internet connection
 
 
-## Try it online
-
-Go to https://stan-smith.github.io/FossFLOW/
-
-
 ## Quick start on local environment
 
 ```bash
 # Clone the repository
-git clone https://github.com/stan-smith/FossFLOW
+git clone https://github.com/framirez1983/fossflow-2.5d
 cd FossFLOW
 
 # Make sure you have npm installed

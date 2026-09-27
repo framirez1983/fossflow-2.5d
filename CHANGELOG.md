@@ -5,6 +5,76 @@ All notable changes to FossFLOW will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0
+
+The first release of **FossFLOW 2.5D**, an independent continuation of
+FossFLOW. This section covers only work done in this fork; the inherited
+FossFLOW history continues below under its original version numbers.
+
+See the [project heritage](README.md#project-heritage-and-attribution) section
+of the README for the full lineage.
+
+### Added
+
+- **Rotatable isometric views** — switch between the NE, NW, SE and SW
+  orientations. The view orientation is stored per view.
+- **Multi-View** — a document can hold several named views, each with its own
+  items, connectors, text boxes and rectangles, with duplicate and delete
+  actions.
+- **Portable `.fossflow` project files** — a self-contained project format that
+  keeps a diagram, its icons and its colours in a single file. Legacy `.json`
+  exports are still accepted on import and upload.
+- **Server-backed Icon Library** — a reusable library of custom icons kept on
+  the server and copied into a document when used, so shared files stay
+  self-contained. Imports are sanitized, limited to 1 MiB, and restricted to an
+  allow-list of media types; icons that reference external resources are
+  rejected.
+- **Rectangle Lock** — freeze a rectangle's position and size while keeping it
+  visible, selectable and unlockable. Locked rectangles behave as background
+  surfaces, so other objects still place and interact on top of them.
+- **Compass** — shows where geographic North lies relative to the currently
+  rotated view, derived from the isometric projection.
+- **Label background opacity** — adjustable per label and globally.
+- **Imported icon management** — rename, replace and promote icons to the
+  library from the item manager.
+- **What's New** — a short summary of notable changes, shown once per version
+  and available from the Help menu.
+
+### Changed
+
+- **Application chrome consolidated** — one unified main menu, a compact header,
+  a vertical tool palette on the left, and the properties inspector moved to the
+  right.
+- **Mouse model made explicit** — left click selects, manipulates and
+  deselects; right click opens the contextual creation menu, which previously
+  also opened on left click. Canvas panning started from the cursor is
+  transient and returns to Select, while an explicitly chosen Hand tool stays
+  active.
+- **Export fidelity** — PNG and SVG exports now match the editor, including for
+  rotated views, text wrapping and label backgrounds.
+- **Localization** — new and renamed interface strings were translated across
+  every supported language.
+
+### Fixed
+
+- **Locked rectangles could still be moved**, and became impossible to select,
+  which left them impossible to unlock.
+- **The compass pointed the wrong way** and ignored the aspect ratio of the
+  isometric projection.
+- **Right-click menus used stale pointer coordinates**, so a creation action
+  could land on the wrong tile.
+- **Panning left the editor stuck in the Hand tool** instead of returning to
+  Select.
+- **Text and images could be selected while dragging the canvas** across the
+  editor controls.
+- **Main menu actions could go stale** relative to the diagram being edited.
+
+### Security
+
+- Icon ingestion enforces a 1 MiB size limit, a media type allow-list,
+  DOMPurify sanitization on both client and server, and rejects external
+  references, including CSS imports.
+
 ## [1.10.8](https://github.com/stan-smith/FossFLOW/compare/v1.10.7...v1.10.8) (2026-03-01)
 
 ### Bug Fixes

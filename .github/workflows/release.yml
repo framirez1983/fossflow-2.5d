@@ -1,12 +1,11 @@
 name: Release
 
+# Manual only. This workflow previously fired after a successful Pages
+# deployment, which meant an ordinary push to master could transitively
+# invoke semantic-release and cut a release. Releasing is now an explicit
+# human decision: run this workflow from the Actions tab.
 on:
-  # Runs after Pages deployment completes successfully
-  workflow_run:
-    workflows: ["Deploy static content to Pages"]
-    types:
-      - completed
-    branches: ["main", "master"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,7 +16,11 @@ jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # The `workflow_run.conclusion` guard this used to carry was left over from
+    # the old workflow_run trigger. On workflow_dispatch, github.event has no
+    # workflow_run object, so the condition was always false and the job never
+    # ran - a manual release could not actually release. The trigger above is
+    # the only gate now.
 
     steps:
       - name: Checkout code
@@ -38,5 +41,4 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release

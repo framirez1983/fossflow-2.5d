@@ -1,7 +1,11 @@
 services:
   fossflow:
-    image: stnsmith/fossflow:latest
-    pull_policy: always
+    # Built from this repository rather than pulled from a published image, so
+    # that `docker compose up` always runs the code in this checkout.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fossflow-2.5d:local
     ports:
       - 80:80
     environment:

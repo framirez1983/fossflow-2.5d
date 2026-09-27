@@ -31,7 +31,7 @@ The following are **out of scope** and PRs implementing them will be closed imme
 - Database integrations
 - Anything that fundamentally changes what FossFLOW is
 
-If you're unsure whether your idea fits, open a [Discussion](https://github.com/stan-smith/FossFLOW/discussions) first.
+If you're unsure whether your idea fits, open a [Discussion](https://github.com/framirez1983/fossflow-2.5d/discussions) first.
 
 ## Code of Conduct
 
@@ -105,7 +105,6 @@ Recommended extensions:
 ## Project Structure
 
 This is a monorepo containing two packages:
-
 ```
 FossFLOW/
 ├── packages/
@@ -144,7 +143,7 @@ FossFLOW/
 
 ### Finding Issues to Work On
 
-1. Check the [Issues](https://github.com/stan-smith/FossFLOW/issues) page
+1. Check the [Issues](https://github.com/framirez1983/fossflow-2.5d/issues) page
 2. Look for issues labeled:
    - `good first issue` - Great for newcomers
    - `help wanted` - Community help needed
@@ -168,7 +167,6 @@ We welcome all types of contributions:
 ### Working with the Monorepo
 
 #### Library Development (fossflow-lib)
-
 ```bash
 # Start library in watch mode
 npm run dev:lib
@@ -181,7 +179,6 @@ cd packages/fossflow-lib && npm test
 ```
 
 #### App Development (fossflow-app)
-
 ```bash
 # Start app dev server
 npm run dev
@@ -193,7 +190,6 @@ npm run build:app
 ```
 
 ### 1. Create a Branch
-
 ```bash
 git checkout -b feature/your-feature-name
 # or
@@ -217,7 +213,6 @@ Branch naming conventions:
 - Test changes in both library and app if applicable
 
 ### 3. Test Your Changes
-
 ```bash
 # Run all tests
 npm test
@@ -241,7 +236,6 @@ IMPORTANT: All pull requests must include the phrase "I have read the contributi
 -->
 
 #### Commit Format
-
 ```
 <type>(<scope>): <subject>
 
@@ -251,7 +245,6 @@ IMPORTANT: All pull requests must include the phrase "I have read the contributi
 ```
 
 #### Examples
-
 ```bash
 git commit -m "feat: add undo/redo functionality"
 git commit -m "fix: prevent menu from opening during drag"
@@ -291,7 +284,6 @@ Common scopes in FossFLOW:
 - `i18n`: Internationalization
 
 #### Breaking Change Examples
-
 ```bash
 # Option 1: Using ! in type
 git commit -m "feat(api)!: remove deprecated exportImage function"
@@ -319,7 +311,6 @@ Your commits will automatically generate:
 - Use meaningful variable and function names
 
 Example:
-
 ```typescript
 interface NodeProps {
   id: string;
@@ -377,7 +368,6 @@ When writing a pull request for this repository, you must begin the PR title wit
 ## Testing
 
 ### Running Tests
-
 ```bash
 npm test                    # Run all tests
 npm test -- --watch        # Watch mode
@@ -392,7 +382,6 @@ npm test -- --coverage     # Coverage report
 - Use meaningful test descriptions
 
 Example:
-
 ```typescript
 describe('useIsoProjection', () => {
   it('should convert tile coordinates to screen coordinates', () => {
@@ -409,10 +398,10 @@ describe('useIsoProjection', () => {
 
 1. **Update your fork**:
    ```bash
-   git remote add upstream https://github.com/stan-smith/FossFLOW.git
+   git remote add upstream https://github.com/framirez1983/fossflow-2.5d.git
    git fetch upstream
-   git checkout main
-   git merge upstream/main
+   git checkout master
+   git merge upstream/master
    ```
 
 2. **Push your branch**:
@@ -430,7 +419,6 @@ describe('useIsoProjection', () => {
 ### PR Title Format
 
 PR titles **must** follow conventional commit format. Non-compliant PRs will be closed:
-
 ```
 feat: add undo/redo functionality
 fix: prevent menu from opening during drag
@@ -448,16 +436,12 @@ feat(connector)!: change default connector mode
 ## Docker Development
 
 ### Building and Running with Docker
-
 ```bash
 # Build multi-architecture image
 docker buildx build --platform linux/amd64,linux/arm64 -t fossflow:local .
 
 # Run with Docker Compose
 docker compose up
-
-# Or pull from Docker Hub
-docker run -p 80:80 stnsmith/fossflow:latest
 ```
 
 ## Community
