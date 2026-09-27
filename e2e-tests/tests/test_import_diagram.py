@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from e2e_helpers import dismiss_onboarding_surfaces
 from selenium.webdriver.remote.file_detector import LocalFileDetector
 
 
@@ -143,6 +144,7 @@ def test_import_via_app_button(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "fossflow-container"))
     )
     time.sleep(2)
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     time.sleep(0.5)
 
@@ -158,20 +160,20 @@ def test_import_via_app_button(driver):
     print(f"\n2. Importing diagram from {TEST_DIAGRAM}...")
 
     # Step 1: Install interceptor that captures the file input before it clicks
+    #
+    # The input must be left exactly where React rendered it. React attaches its
+    # delegated listeners to the root container, so re-parenting the input into
+    # document.body moves it outside that tree and the change event never
+    # reaches the app's handler - the import then silently does nothing.
     driver.execute_script("""
         window.__capturedFileInput = null;
         var origClick = HTMLInputElement.prototype.click;
+        window.__origHTMLInputClick = origClick;
         HTMLInputElement.prototype.click = function() {
             if (this.type === 'file') {
                 window.__capturedFileInput = this;
-                // Don't actually click (which opens native dialog)
-                // Instead, append to DOM so Selenium can interact with it
-                this.style.position = 'fixed';
-                this.style.top = '0';
-                this.style.left = '0';
-                this.style.opacity = '0.01';
-                this.style.zIndex = '99999';
-                document.body.appendChild(this);
+                // Swallow the click (it would open the native file chooser)
+                // but leave the element in the React tree.
                 return;
             }
             origClick.call(this);
@@ -194,16 +196,22 @@ def test_import_via_app_button(driver):
     time.sleep(1)
     save_screenshot(driver, "import_02_menu_open")
 
-    # Click "Open" menu item
+    # Click the "Open FossFLOW File…" menu item.
+    # The item was renamed from "Open"; match the current label, tolerating
+    # the trailing ellipsis character.
     open_item = driver.execute_script("""
         var items = document.querySelectorAll('[role="menuitem"], li.MuiMenuItem-root');
         for (var i = 0; i < items.length; i++) {
             var text = items[i].textContent.trim().toLowerCase();
-            if (text === 'open') return items[i];
+            if (text === 'open fossflow file…' || text === 'open fossflow file...') return items[i];
+        }
+        for (var j = 0; j < items.length; j++) {
+            var t2 = items[j].textContent.trim().toLowerCase();
+            if (t2.indexOf('open') === 0) return items[j];
         }
         return null;
     """)
-    assert open_item is not None, "'Open' menu item not found"
+    assert open_item is not None, "'Open FossFLOW File…' menu item not found"
     open_item.click()
     time.sleep(1)
 
@@ -216,6 +224,25 @@ def test_import_via_app_button(driver):
     print("   File sent to input.")
     time.sleep(3)
 
+    # Loading a file over a modified canvas raises the app's own
+    # "You have unsaved changes. Continue loading?" confirmation. Accept it so
+    # the import proceeds. Any other alert is a real failure.
+    for _ in range(10):
+        try:
+            alert = driver.switch_to.alert
+        except Exception:
+            break
+        alert_text = alert.text
+        if "unsaved changes" in alert_text.lower():
+            alert.accept()
+            print(f"   Accepted unsaved-changes confirmation: {alert_text}")
+        else:
+            alert.accept()
+            pytest.fail(f"Import failed with unexpected alert: {alert_text}")
+        time.sleep(0.5)
+
+    time.sleep(2)
+
     # Restore original click
     driver.execute_script("""
         if (window.__origHTMLInputClick) {
@@ -223,21 +250,12 @@ def test_import_via_app_button(driver):
         }
     """)
 
-    # Check for alert dialogs (validation errors)
-    try:
-        alert = driver.switch_to.alert
-        alert_text = alert.text
-        alert.accept()
-        print(f"   Alert appeared: {alert_text}")
-        pytest.fail(f"Import failed with alert: {alert_text}")
-    except Exception:
-        pass
-
     save_screenshot(driver, "import_03_after_import")
 
     # --- Wait for diagram to render ---
     print("\n3. Waiting for diagram to render...")
     time.sleep(2)
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     time.sleep(1)
     save_screenshot(driver, "import_03_rendered")

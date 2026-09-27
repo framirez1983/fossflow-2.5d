@@ -11,6 +11,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from e2e_helpers import dismiss_onboarding_surfaces
 
 
 SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
@@ -138,6 +139,17 @@ def place_node(driver, screenshot_prefix=""):
     time.sleep(1)
 
     # Expand the ISOFLOW icon collection
+    # The "Add item" menu offers New item / Existing item / Manage items.
+    # The icon collections sit behind "New item (N)", so open that first.
+    driver.execute_script("""
+        const entries = document.querySelectorAll('button, li, [role="menuitem"]');
+        for (const entry of entries) {
+            if (/New item/i.test(entry.innerText || '')) { entry.click(); return true; }
+        }
+        return false;
+    """)
+    time.sleep(1.2)
+
     driver.execute_script("""
         const buttons = document.querySelectorAll('button');
         for (const btn of buttons) {
@@ -319,6 +331,7 @@ def test_place_node_on_canvas(driver):
     )
     time.sleep(2)
 
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     dismiss_tips(driver)
     time.sleep(0.5)
@@ -358,6 +371,7 @@ def test_undo_redo_node(driver):
     )
     time.sleep(2)
 
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     dismiss_tips(driver)
     time.sleep(0.5)

@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from e2e_helpers import dismiss_onboarding_surfaces
 
 
 SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
@@ -165,6 +166,7 @@ def test_rectangle_undo_redo(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "fossflow-container"))
     )
     time.sleep(2)
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     time.sleep(0.5)
 
@@ -278,6 +280,7 @@ def test_textbox_undo_redo(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "fossflow-container"))
     )
     time.sleep(2)
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     time.sleep(0.5)
 

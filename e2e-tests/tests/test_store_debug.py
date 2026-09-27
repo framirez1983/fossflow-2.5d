@@ -78,6 +78,17 @@ def place_node(d):
     time.sleep(1)
 
     # Expand ISOFLOW icon collection
+    # The "Add item" menu offers New item / Existing item / Manage items.
+    # The icon collections sit behind "New item (N)", so open that first.
+    d.execute_script("""
+        const entries = document.querySelectorAll('button, li, [role="menuitem"]');
+        for (const entry of entries) {
+            if (/New item/i.test(entry.innerText || '')) { entry.click(); return true; }
+        }
+        return false;
+    """)
+    time.sleep(1.2)
+
     d.execute_script("""
         const buttons = document.querySelectorAll('button');
         for (const btn of buttons) {

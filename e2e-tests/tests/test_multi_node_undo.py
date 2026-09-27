@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from e2e_helpers import dismiss_onboarding_surfaces
 
 
 SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
@@ -100,6 +101,17 @@ def place_node_at(driver, x_offset, y_offset):
     time.sleep(0.8)
 
     # Expand ISOFLOW icon collection
+    # The "Add item" menu offers New item / Existing item / Manage items.
+    # The icon collections sit behind "New item (N)", so open that first.
+    driver.execute_script("""
+        const entries = document.querySelectorAll('button, li, [role="menuitem"]');
+        for (const entry of entries) {
+            if (/New item/i.test(entry.innerText || '')) { entry.click(); return true; }
+        }
+        return false;
+    """)
+    time.sleep(1.2)
+
     driver.execute_script("""
         const buttons = document.querySelectorAll('button');
         for (const btn of buttons) {
@@ -169,6 +181,7 @@ def test_multi_node_undo_redo(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "fossflow-container"))
     )
     time.sleep(2)
+    dismiss_onboarding_surfaces(driver)
     dismiss_modals(driver)
     time.sleep(0.5)
 
