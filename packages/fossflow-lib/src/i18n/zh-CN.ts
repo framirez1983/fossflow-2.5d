@@ -194,14 +194,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "延迟加载已禁用。所有图标包将在启动时加载。",
       note: "可以根据需要启用或禁用图标包。禁用的图标包将减少内存使用并提高性能。"
     }
-  },
-  lazyLoadingWelcome: {
-    title: "新功能：延迟加载！",
-    message: "嘿！应大家的要求，我们实现了图标的延迟加载功能，现在如果您想启用非标准图标包，可以在「配置」部分中启用它们。",
-    configPath: "点击左上角的汉堡菜单图标",
-    configPath2: "以访问配置。",
-    canDisable: "如果您愿意，可以禁用此行为。",
-    signature: "-Stan"
   }
 };
 

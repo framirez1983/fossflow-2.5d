@@ -195,14 +195,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "Il caricamento ritardato è disabilitato. Tutti i pacchetti di icone vengono caricati all'avvio.",
       note: "I pacchetti di icone possono essere abilitati o disabilitati in base alle tue esigenze. I pacchetti disabilitati riducono l'uso di memoria e migliorano le prestazioni."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Nuova funzione: Lazy Loading!",
-    message: "Ciao! Su grande richiesta, abbiamo implementato il caricamento ritardato (Lazy Loading) delle icone. Ora, se desideri abilitare pacchetti di icone non standard, puoi farlo nella sezione 'Configurazione'.",
-    configPath: "Clicca sull'icona dell'hamburger",
-    configPath2: "in alto a sinistra per accedere alla Configurazione.",
-    canDisable: "Puoi disattivare questo comportamento se lo desideri.",
-    signature: "-Stan"
   }
 };
 

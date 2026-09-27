@@ -194,14 +194,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "Lazy loading dinonaktifkan. Semua paket ikon dimuat saat startup.",
       note: "Paket ikon dapat diaktifkan atau dinonaktifkan sesuai kebutuhan Anda. Paket yang dinonaktifkan akan mengurangi penggunaan memori dan meningkatkan performa."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Fitur Baru: Lazy Loading!",
-    message: "Hai! Setelah banyak permintaan, kami telah mengimplementasikan Lazy Loading ikon, jadi sekarang jika Anda ingin mengaktifkan paket ikon non-standar, Anda dapat mengaktifkannya di bagian 'Konfigurasi'.",
-    configPath: "Klik pada ikon Hamburger",
-    configPath2: "di kiri atas untuk mengakses Konfigurasi.",
-    canDisable: "Anda dapat menonaktifkan perilaku ini jika diinginkan.",
-    signature: "-Stan"
   }
 };
 

@@ -218,14 +218,6 @@ export interface LocaleProps {
       note: string;
     };
   };
-  lazyLoadingWelcome: {
-    title: string;
-    message: string;
-    configPath: string;
-    configPath2: string;
-    canDisable: string;
-    signature: string;
-  };
   whatsNew: {
     title: string;
     intro: string;
@@ -250,6 +242,7 @@ export interface LocaleProps {
     noteDesc: string;
     close: string;
     dontShowAgain: string;
+    signature: string;
   };
   // other namespaces can be added here
 }

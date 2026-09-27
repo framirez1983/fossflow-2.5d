@@ -195,14 +195,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "Opóźnione ładowanie jest wyłączone. Wszystkie pakiety ikon są ładowane podczas uruchamiania.",
       note: "Pakiety ikon można włączać lub wyłączać w zależności od potrzeb. Wyłączone pakiety zmniejszają zużycie pamięci i poprawiają wydajność."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Nowa funkcja: Opóźnione ładowanie!",
-    message: "Hej! W odpowiedzi na liczne prośby wprowadziliśmy funkcję opóźnionego ładowania ikon, więc teraz, jeśli chcesz włączyć niestandardowe pakiety ikon, możesz to zrobić w sekcji „Ustawienia”.",
-    configPath: "Kliknij ikonę manu.",
-    configPath2: "w lewym górnym rogu, aby uzyskać dostęp do ustawień.",
-    canDisable: "Jeśli chcesz, możesz wyłączyć tę funkcję..",
-    signature: "-Stan"
   }
 };
 

@@ -194,14 +194,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "Le chargement paresseux est désactivé. Tous les packs d'icônes sont chargés au démarrage.",
       note: "Les packs d'icônes peuvent être activés ou désactivés selon vos besoins. Les packs désactivés réduiront l'utilisation de la mémoire et amélioreront les performances."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Nouvelle Fonctionnalité : Chargement Paresseux !",
-    message: "Salut ! Suite à une forte demande, nous avons implémenté le Chargement Paresseux des icônes, donc maintenant si vous voulez activer des packs d'icônes non standard, vous pouvez les activer dans la section 'Configuration'.",
-    configPath: "Cliquez sur l'icône Hamburger",
-    configPath2: "en haut à gauche pour accéder à la Configuration.",
-    canDisable: "Vous pouvez désactiver ce comportement si vous le souhaitez.",
-    signature: "-Stan"
   }
 };
 

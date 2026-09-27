@@ -194,14 +194,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "Tembel yükleme devre dışı. Tüm simge paketleri başlangıçta yüklenir.",
       note: "Simge paketleri ihtiyaçlarınıza göre etkinleştirilebilir veya devre dışı bırakılabilir. Devre dışı bırakılan paketler bellek kullanımını azaltır ve performansı artırır."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Yeni Özellik: Tembel Yükleme!",
-    message: "Merhaba! Popüler talep üzerine, simgelerin Tembel Yüklenmesini uyguladık, bu yüzden artık standart olmayan simge paketlerini etkinleştirmek isterseniz bunları 'Yapılandırma' bölümünde etkinleştirebilirsiniz.",
-    configPath: "Yapılandırmaya erişmek için",
-    configPath2: "sol üstteki Hamburger simgesine tıklayın.",
-    canDisable: "İsterseniz bu davranışı devre dışı bırakabilirsiniz.",
-    signature: "-Stan"
   }
 };
 

@@ -193,14 +193,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "La carga diferida está desactivada. Todos los paquetes de iconos se cargan al iniciar.",
       note: "Los paquetes de iconos se pueden activar o desactivar según tus necesidades. Los paquetes desactivados reducirán el uso de memoria y mejorarán el rendimiento."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Nueva Funcionalidad: ¡Carga Diferida!",
-    message: "¡Hola! Después de la demanda popular, hemos implementado la Carga Diferida de iconos, así que ahora si quieres activar paquetes de iconos no estándar puedes activarlos en la sección 'Configuración'.",
-    configPath: "Haz clic en el icono de Hamburguesa",
-    configPath2: "en la esquina superior izquierda para acceder a la Configuración.",
-    canDisable: "Puedes desactivar este comportamiento si lo deseas.",
-    signature: "-Stan"
   }
 };
 

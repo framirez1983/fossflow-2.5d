@@ -26,7 +26,9 @@ export const WhatsNewDialog = () => {
   const setDialog = useUiStateStore((state) => state.actions.setDialog);
 
   const isOpen = dialog === DialogTypeEnum.WHATS_NEW;
-  const [dontShowAgain, setDontShowAgain] = useState(false);
+  // Checked by default: this is a once-per-version announcement, so closing
+  // it records the version unless the user explicitly opts out.
+  const [dontShowAgain, setDontShowAgain] = useState(true);
 
   const handleClose = () => {
     if (dontShowAgain) {
@@ -35,14 +37,16 @@ export const WhatsNewDialog = () => {
     setDialog(null);
   };
 
+  // First run for this version: announce the release once, automatically.
+  // Only fires when nothing else is on screen so it cannot stack with another
+  // central dialog. Opening it from Help > What's New always works, whether
+  // or not it has already been announced.
   useEffect(() => {
-    if (isOpen) {
-      const shownVersion = localStorage.getItem(WHATS_NEW_KEY);
-      if (shownVersion === APP_DISPLAY_VERSION) {
-        handleClose();
-      }
-    }
-  }, [isOpen]);
+    if (dialog !== null) return;
+    if (localStorage.getItem(WHATS_NEW_KEY) === APP_DISPLAY_VERSION) return;
+    setDialog(DialogTypeEnum.WHATS_NEW);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!isOpen) return null;
 
@@ -129,6 +133,18 @@ export const WhatsNewDialog = () => {
               <strong>{t('noteTitle')}</strong> {t('noteDesc')}
             </Typography>
           </Box>
+
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 2,
+              fontStyle: 'italic',
+              fontWeight: 600,
+              textAlign: 'right'
+            }}
+          >
+            {t('signature')}
+          </Typography>
         </Box>
       </DialogContent>
 

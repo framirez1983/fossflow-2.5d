@@ -193,14 +193,6 @@ const locale: LocaleProps = {
       note: "Icon packs can be enabled or disabled based on your needs. Disabled packs will reduce memory usage and improve performance."
     }
   },
-  lazyLoadingWelcome: {
-    title: "New Feature: Lazy Loading!",
-    message: "Hey! After popular demand, we have implemented Lazy Loading of icons, so now if you want to enable non-standard icon packs you can enable them in the 'Configuration' section.",
-    configPath: "Click on the Hamburger icon",
-    configPath2: "in the top left to access Configuration.",
-    canDisable: "You can disable this behaviour if you wish.",
-    signature: "-Stan"
-  },
   whatsNew: {
     title: "What's New in FossFLOW 2.5D v{version}",
     intro: "Welcome to FossFLOW 2.5D! This release brings major improvements to help you create better diagrams faster.",
@@ -210,7 +202,7 @@ const locale: LocaleProps = {
     multiViewTitle: "Multi-View Diagrams",
     multiViewDesc: "Create multiple named views within a single document. Switch between different perspectives, zoom levels, and layer configurations instantly.",
     fossflowFormatTitle: "FossFLOW (.fossflow) File Format",
-    fossflowFormatDesc: "A new, compact, and portable file format for your diagrams. Self-contained, versioned, and designed for long-term archival and sharing.",
+    fossflowFormatDesc: "A new, compact, and portable file format for your diagrams. Self-contained, and designed for long-term archival and sharing.",
     serverStorageTitle: "Server Storage",
     serverStorageDesc: "Save diagrams directly to a FossFLOW server. Collaborate with your team, access diagrams from anywhere, and keep your work safe.",
     iconLibraryTitle: "Server-Backed Icon Library",
@@ -224,7 +216,8 @@ const locale: LocaleProps = {
     noteTitle: "Note",
     noteDesc: "This dialog appears once per version. Access it anytime from Help > What's New in the main menu.",
     close: "Close",
-    dontShowAgain: "Don't show again for this version"
+    dontShowAgain: "Don't show again for this version",
+    signature: "—Fernando"
   },
 
   }

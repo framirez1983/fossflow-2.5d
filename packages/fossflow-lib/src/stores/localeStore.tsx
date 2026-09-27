@@ -47,10 +47,19 @@ export function useTranslation<K extends keyof LocaleProps>(namespace?: K) {
   const locale = useLocale();
   
   if (namespace) {
-    // Return scoped translation function for specific namespace
-    const namespaceData = locale[namespace];
+    // Return scoped translation function for specific namespace.
+    // A locale can be missing a namespace that en-US defines (for example
+    // `whatsNew`, which only exists in en-US). Resolve the namespace from
+    // the active locale first, then fall back to en-US for that namespace
+    // alone, so the rest of the locale keeps its own translations. Finally
+    // fall back to an empty object so `t` returns the key instead of
+    // throwing on a namespace that exists in neither.
+    const namespaceData =
+      (locale[namespace] as Record<string, unknown> | undefined) ??
+      (enUS[namespace] as Record<string, unknown> | undefined) ??
+      {};
     const t = (key: keyof LocaleProps[K]): string => {
-      const value = namespaceData[key];
+      const value = namespaceData[key as string];
       return typeof value === 'string' ? value : String(key);
     };
     return { t };

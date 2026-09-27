@@ -24,7 +24,6 @@ import { ConnectorEmptySpaceTooltip } from '../ConnectorEmptySpaceTooltip/Connec
 import { ConnectorRerouteTooltip } from '../ConnectorRerouteTooltip/ConnectorRerouteTooltip';
 import { ImportHintTooltip } from '../ImportHintTooltip/ImportHintTooltip';
 import { LassoHintTooltip } from '../LassoHintTooltip/LassoHintTooltip';
-import { LazyLoadingWelcomeNotification } from '../LazyLoadingWelcomeNotification/LazyLoadingWelcomeNotification';
 import { CoordsUtils, getTilePosition } from 'src/utils';
 
 const ToolsEnum = {
@@ -266,7 +265,9 @@ export const UiOverlay = ({
 
       {dialog === DialogTypeEnum.SETTINGS && <SettingsDialog iconPackManager={iconPackManager || undefined} />}
 
-      {dialog === DialogTypeEnum.WHATS_NEW && <WhatsNewDialog />}
+      {/* Mounted unconditionally so it can open itself on first run; it
+          renders null unless the dialog is active. */}
+      <WhatsNewDialog />
 
       {/* Show hint tooltips only in editable mode */}
       {editorMode === EditorModeEnum.EDITABLE && <ConnectorHintTooltip toolMenuRef={toolMenuRef} />}
@@ -275,8 +276,11 @@ export const UiOverlay = ({
       {editorMode === EditorModeEnum.EDITABLE && <ImportHintTooltip />}
       {editorMode === EditorModeEnum.EDITABLE && <LassoHintTooltip toolMenuRef={toolMenuRef} />}
 
-      {/* Show lazy loading welcome notification if icon pack manager is provided */}
-      {iconPackManager && <LazyLoadingWelcomeNotification />}
+      {/* The inherited "New Feature: Lazy Loading!" announcement was retired
+          from first-run UX and removed along with its translations. The
+          What's New dialog above is the single central release/onboarding
+          dialog for FossFLOW 2.5D. Historical credit for that work lives in
+          README / Project Heritage and LICENSE, not in runtime UX. */}
 
       <SceneLayer>
         {contextMenu && (

@@ -195,14 +195,6 @@ const locale: LocaleProps = {
       lazyLoadingDisabledNote: "O carregamento sob demanda está desativado. Todos os pacotes de ícones são carregados na inicialização.",
       note: "Os pacotes de ícones podem ser ativados ou desativados conforme suas necessidades. Pacotes desativados reduzirão o uso de memória e melhorarão o desempenho."
     }
-  },
-  lazyLoadingWelcome: {
-    title: "Novo Recurso: Carregamento Sob Demanda!",
-    message: "Ei! Após demanda popular, implementamos o Carregamento Sob Demanda de ícones, então agora se você quiser ativar pacotes de ícones não padrão, você pode ativá-los na seção 'Configuração'.",
-    configPath: "Clique no ícone do Menu",
-    configPath2: "no canto superior esquerdo para acessar a Configuração.",
-    canDisable: "Você pode desativar esse comportamento se desejar.",
-    signature: "-Stan"
   }
 };
 
