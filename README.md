@@ -9,6 +9,11 @@ isometric diagrams — network topologies, floor plans, data-centre layouts and
 technical schematics. It runs entirely in your browser and works offline. Your
 diagrams stay on your machine unless you explicitly turn on Server Storage.
 
+One of the project's community goals is to build a high-quality open library of
+3D/isometric infrastructure icons. Contributions from illustrators, designers
+and infrastructure professionals are especially welcome — you do not need to
+write code to contribute useful artwork.
+
 ## Highlights
 
 - **Rotatable isometric views** — four orientations, with a compass that shows
@@ -32,6 +37,7 @@ diagrams stay on your machine unless you explicitly turn on Server Storage.
 - [Files and storage](#files-and-storage)
 - [Export](#export)
 - [Localization](#localization)
+- [Community 3D icon library](#community-3d-icon-library)
 - [Development](#development)
 - [Project heritage and attribution](#project-heritage-and-attribution)
 - [Contributing](#contributing)
@@ -150,6 +156,21 @@ including for rotated views.
 The interface is available in 12 languages: Bengali, English, Spanish, French,
 Hindi, Indonesian, Italian, Polish, Portuguese, Russian, Turkish and Simplified
 Chinese. The language can be changed from the toolbar.
+
+## Community 3D icon library
+
+Infrastructure diagrams are only as useful as the visual vocabulary available
+to build them. We want FossFLOW 2.5D to grow an open, reusable collection of
+high-quality 3D/isometric icons for real IT and network infrastructure: racks,
+servers, switches, firewalls, access points, UPS systems, workstations and
+other equipment.
+
+This is deliberately a community effort. If you enjoy drawing or modelling
+technical hardware, **icon-only contributions are welcome** — no TypeScript or
+React experience is required. Original icon packs, individual devices and
+improvements to existing artwork can all be contributed through pull requests.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the artwork contribution guidelines.
 
 ## Development
 
