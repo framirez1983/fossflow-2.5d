@@ -1,4 +1,4 @@
-# Contributing to FossFLOW
+# Contributing to FossFLOW 2.5D
 
 Thank you for your interest in contributing to FossFLOW! This guide will help you get started with contributing to the project.
 
@@ -57,8 +57,8 @@ By participating in this project, you agree to abide by our Code of Conduct:
 1. Fork the repository on GitHub
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/FossFLOW.git
-   cd FossFLOW
+   git clone https://github.com/YOUR_USERNAME/fossflow-2.5d.git
+   cd fossflow-2.5d
    ```
 3. Install dependencies:
    ```bash
@@ -161,6 +161,37 @@ We welcome all types of contributions:
 - **Tests**: Increase test coverage
 - **UI/UX improvements**: Make FossFLOW better to use
 - **Performance**: Optimize code for better performance
+- **3D/isometric icon artwork**: Expand the visual library with original
+  infrastructure icons — coding experience is not required
+
+### Contributing 3D / isometric icons
+
+We want FossFLOW 2.5D to grow into a rich open library of visual building blocks
+for network and IT infrastructure. Artists, designers, CAD/3D enthusiasts and
+infrastructure professionals are welcome to contribute even if they do not
+write code.
+
+Good icon contributions should:
+
+- represent real infrastructure objects clearly in an isometric/2.5D diagram
+- use original artwork, or artwork whose licence clearly permits redistribution
+- have a clean background suitable for placement directly on a diagram
+- keep perspective, proportions and visual treatment internally consistent
+- include an editable/source version when available, in addition to the
+  exported asset used by the project
+- identify what the icon represents and, when relevant, whether it is generic
+  or depicts a specific device/model
+
+Useful subjects include racks, servers, switches, firewalls, wireless access
+points, UPS systems, patch panels, workstations, storage, cameras and other
+physical infrastructure.
+
+**Icon-only pull requests are explicitly welcome.** A contribution does not need
+to contain TypeScript, React or any other code to be valuable to the project.
+
+If you are planning a large icon family, open a pull request early with a small
+representative set so the visual direction can be reviewed before you draw the
+entire collection.
 
 ## Development Workflow
 
@@ -473,6 +504,4 @@ By contributing to FossFLOW, you agree that your contributions will be licensed 
 
 ---
 
-Thank you for contributing to FossFLOW! Your efforts help make this project better for everyone. If you have any questions, don't hesitate to ask in the issues or discussions.
-
--S
+Thank you for contributing to FossFLOW 2.5D! Your efforts help make this project better for everyone. If you have any questions, don't hesitate to ask in the issues or discussions.
